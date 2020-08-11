@@ -1,3 +1,9 @@
 <h1><%= @user.name %></h1>
-<% @user.orders.each do |order| %>
-   <div> <%= order %> </div>
+
+Your orders:
+<ul>
+   <% @user.orders.each do |order| %>
+      <li> <%= link_to order.created_at, order_path(order) %> </li>
+   <% end %>
+</ul>
+
