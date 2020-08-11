@@ -12,10 +12,10 @@ OrderDessert.destroy_all
 
 10.times { User.create(name: Faker::Name.unique.name)}
 
-25.times {Order.create(name_tag: Faker::FunnyName.name, user_id: User.all.sample)}
+25.times {Order.create(name_tag: Faker::Number.unique.number, user: User.all.sample)}
 
 20.times { Dessert.create(name: Faker::Dessert.unique.variety, price: rand(1..20)) }
 
-10.times {OrderDessert.create(order_id: Order.all.sample, dessert_id: Dessert.all.sample)}
+10.times {OrderDessert.create(order: Order.all.sample, dessert: Dessert.all.sample)}
 
 

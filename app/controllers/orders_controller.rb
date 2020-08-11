@@ -1,5 +1,9 @@
 class OrdersController < ApplicationController
   
+  def index
+    @orders = Order.all
+  end
+
   def show
     @order = Order.find(params[:id])
     @user = @order.user
@@ -11,13 +15,30 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(order_params)
-    redirect_to oder_path(@order)
+   
+    redirect_to order_path(@order)
+  end
+
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to order_path(@order)
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_path
   end
 
   private
 
   def order_params
-    params.require(:orders).permit(:name_tag, :user_id, :dessert_ids => [])
+    params.require(:order).permit(:name_tag, :user_id, :dessert_ids => [])
   end
 
 end

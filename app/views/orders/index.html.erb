@@ -1,0 +1,6 @@
+<h1> All Orders </h1>
+
+
+<% @orders.each do |order| %>
+  <div>  #  <%= link_to order.name_tag, order_path(order) %> </div>
+  <% end %>

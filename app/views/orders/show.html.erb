@@ -1,4 +1,11 @@
 <h1>Your order details </h1>
 
 
-<%= @order.name_tag %>
+<% @order.desserts.each do |des|  %>
+<%= des.name %>
+<% end %>
+<div>
+<%= link_to "edit", edit_order_path(@order) %>
+<%= link_to 'delete', order_path(@order), method: :delete %>
+
+</div>
